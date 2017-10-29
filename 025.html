@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度音乐的全选操作</title>
+	<style>
+		html, body, ul {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+		}
+		#songs {
+			border: 1px solid #eee;
+			width: 400px;
+			margin: 20px auto;
+			font-size: 14px;
+		}
+		#list li {
+			height: 30px;
+			line-height: 30px;
+		}
+		#toolbar {
+			border-top: 1px solid #DEDEDE;
+			border-bottom: 2px solid #424242;
+			width: 100%;
+			height: 35px;
+			line-height: 35px;
+		}
+		#toolbar li {
+			float: left;
+			width: 100px;
+			text-align: left;
+		}
+		#toolbar .button{
+			border: 1px solid #CECECE;
+			height: 20px;
+			margin: 6px 5px;
+			width: 60px;
+			line-height: 24px;
+			margin-left: 10px;
+			border-radius: 5px;
+			text-align: center;
+			opacity: 0.3;
+		}
+		
+		
+		#list .title {
+			display: inline-block;
+			width: 280px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oList = document.getElementById('list'),
+				aLi = oList.getElementsByTagName('li'),
+				oToolbar = document.getElementById('toolbar'),
+				aBtn = oToolbar.getElementsByTagName('div'),
+				aCheckbox = oList.getElementsByTagName('input'),
+				oCheckAll = oToolbar.getElementsByTagName('input')[0],
+				oTurn = document.getElementById('turn'),
+				flag = 0,
+				originalColor = [],
+				num;
+
+			for(var i=0; i<aCheckbox.length; i++){
+				aCheckbox[i].index = i;
+				aCheckbox[i].onclick = function(){
+					num = this.index
+					flag = 0;
+					for(var i=0; i<aCheckbox.length; i++){
+						flag += Number(aCheckbox[i].checked);
+					}
+					
+					if(flag == aCheckbox.length){
+						oCheckAll.checked = true;
+					} else {
+						oCheckAll.checked = false;
+					}
+
+				}
+			}
+
+			for(var i=0; i<aLi.length; i++){
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					originalColor=this.style.background
+					this.style.background = '#eee';
+					//this.style.background =originalColor;
+				}
+				aLi[i].onmouseout = function(){
+					if(!aCheckbox[this.index].checked){
+						this.style.background = '#fff';
+					}
+				}
+			}
+
+			oCheckAll.onclick = function(){
+				if(!this.checked){
+					for(var i=0; i<aCheckbox.length; i++){
+						aCheckbox[i].checked = false;
+						aLi[i].style.background = "#fff";
+					}
+				} else {
+					for(var i=0; i<aCheckbox.length; i++){
+						aCheckbox[i].checked = true;
+						aLi[i].style.background = "#eee";
+					}
+				}
+			}
+			
+			oTurn.onclick = function(){
+				for(var i=0;i<aCheckbox.length;i++){
+					if(aCheckbox[i].checked == false){
+						aCheckbox[i].checked = true;
+						aLi[i].style.background = "#eee";
+					} else {
+						aCheckbox[i].checked = false;
+						aLi[i].style.background = "#fff";
+					}
+				}
+				flag = 0;
+					for(var i=0; i<aCheckbox.length; i++){
+						flag += Number(aCheckbox[i].checked);
+					}
+					
+					if(flag == aCheckbox.length){
+						oCheckAll.checked = true;
+					} else {
+						oCheckAll.checked = false;
+					}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="songs">
+		<ul id="list">
+			<li>
+				<input type="checkbox">
+				<span class="title">私奔</span>
+				<span class="singer">梁博</span>
+			</li>
+			<li>
+				<input type="checkbox">
+				<span class="title">北京北京</span>
+				<span class="singer">梁博、黄勇</span>
+			</li>
+			<li>
+				<input type="checkbox">
+				<span class="title">我爱你中国</span>
+				<span class="singer">梁博</span>
+			</li>
+			<li>
+				<input type="checkbox">
+				<span class="title">花火</span>
+				<span class="singer">梁博</span>
+			</li>
+			<li>
+				<input type="checkbox">
+				<span class="title">回来</span>
+				<span class="singer">梁博</span>
+			</li>
+			<li>
+				<input type="checkbox">
+				<span class="title">爱要有你才完美</span>
+				<span class="singer">梁博、那英</span>
+			</li>
+		</ul>
+		<ul id="toolbar">
+			<li>
+				<input type="checkbox" id="t1">全选
+			</li>
+			
+			<li><button id="turn">反选</button>
+				
+			</li>
+		
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>生成三行12列div</title>
+</head>
+
+<body>
+
+<script>
+ 	var str='';
+ 	for(var i=0;i<3;i++){
+ 		for(var j=0;j<12;j++){
+ 			str += '<div style ="top :'+ i*55 + 'px; left:' + j*55 +'px; position: absolute; width :50px; height:50px; background : red;"></div>'
+ 			//alert(str)
+ 		}
+ 	}
+	document.body.innerHTML =str;
+</script>
+
+</body>
+</html>

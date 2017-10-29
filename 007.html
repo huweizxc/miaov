@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>生成V</title>
+</head>
+
+<body>
+
+	<script>
+		var len = 13;
+		var str = '';
+		var arr =  ['red', 'yellow', 'blue','orange','#0055ff'];
+		for (var i=0; i<len; i++) {
+			if(i<=len/2){
+				str += '<div style="top:' + Math.floor(i)*55 
+				+'px; left:' + i*55 + 
+				'px; position:absolute; width:50px; height:50px; background:'
+				+ arr[i%arr.length] +';"></div>';
+			}else {
+				str += '<div style="top:' + Math.floor(len-i-1)*55 
+				+'px; left:' + i*55 + 
+				'px; position:absolute; width:50px; height:50px; background:'
+				+ arr[i%arr.length] +';"></div>';
+			}
+		}
+		document.body.innerHTML = str;
+		
+	</script>
+
+</body>
+</html>
