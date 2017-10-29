@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>乘法口诀表</title>
+			<style>
+				table{
+					width: 821px;
+					height: 421px;
+					//border-collapse:collapse ;
+					margin: 0 auto;
+				}
+				table th{
+					//width: 85px;
+					height: 40px;
+					border: 1px solid black;
+					margin: 0;
+				}
+				body{
+					text-align: center;
+					
+				}
+				/*h1{
+					width: 800px;
+					margin: 20px auto;
+					text-align: center;
+					color: #666;
+					font-family: "宋体", Verdana, sans-serif, "宋体";
+				}*/
+			</style>
+			<script>
+				window.onload = function(){
+	
+				var oBtn = document.getElementById('btn');
+				var oUl = document.getElementById('list');
+				 
+				var str='';
+				var i=0;
+				
+				oBtn.onclick=function(){
+					// str += ("<table>")
+					i=i+1
+					if(i>9){
+						alert('别点了，真的没有了')
+						i='o';
+					}
+					str+= ("<tr>")
+					for (var j=1;j<=i;j++){
+						str += "<th>"+j +"*"+ i+"="+ i*j + "</th>";
+					}str +=("</tr>")
+				//str += ("</table>")
+				oUl.innerHTML=str;
+				
+				//alert( str)
+				}
+	//			var str='';
+	//			str += ("<h1>九九乘法口诀表</h1>")
+	//			str += ("<table>")
+	//			for (var i=1;i<=9;i++){
+	//				str+= ("<tr>")
+	//				for (var j=1;j<=i;j++){
+	//					str += "<th>"+i +"*"+ j+"="+ i*j + "</th>";
+	//				}str +=("</tr>")
+	//			}
+	//			str += ("</table>")
+				
+			}
+		</script>
+	</head>
+
+	<body>
+		<input id="btn" type="button" value="自动生成乘法口诀表" />
+		<table id="list"></table>
+	</body>
+</html>

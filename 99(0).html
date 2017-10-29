@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>99乘法口诀表</title>
+	<style>
+		table{
+			width: 800px;
+			height: 300px;
+			border-collapse:collapse ;
+			margin: 0 auto;
+		}
+		table th{
+			border: 1px solid black;
+		}
+		body{
+			text-align: center;
+			
+		}
+		h1{
+			width: 800px;
+			margin: 20px auto;
+			text-align: center;
+			color: #666;
+			font-family: "宋体", Verdana, sans-serif, "宋体";
+		}
+	</style>
+</head>
+
+	<body>
+		<script>
+			var str='';
+			str += ("<h1>九九乘法口诀表</h1>")
+			str += ("<table>")
+			for (var i=1;i<=9;i++){
+				str+= ("<tr>")
+				for (var j=1;j<=i;j++){
+					str += "<th>"+i +"*"+ j+"="+ i*j + "</th>";
+				}str +=("</tr>")
+			}
+			str += ("</table>")
+			document.body.innerHTML=str;
+		</script>
+	</body>
+</html>
